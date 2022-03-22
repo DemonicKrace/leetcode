@@ -1,4 +1,3 @@
-# leetcode
-leetcode study
+# Leetcode
+Leetcode study, reference by https://leetcode.com
 
-test
