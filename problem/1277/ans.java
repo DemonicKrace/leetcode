@@ -29,7 +29,7 @@ class Solution {
         // return dp[height - 1][width - 1];
         
         // https://leetcode.com/problems/count-square-submatrices-with-all-ones/discuss/643429/Python-DP-Solution-%2B-Thinking-Process-Diagrams-(O(mn)-runtime-O(1)-space)
-        // method 3, best dp way
+        // method 3, best dp way, in place
         int res = 0;
         for (int i = 0; i < matrix.length; ++i) {
             for (int j = 0; j < matrix[0].length; ++j) {
