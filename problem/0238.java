@@ -14,7 +14,7 @@ class Solution {
         for (int j = nums.length - 2; j >= 0; j--) {
             // update right numbers product
             right *= nums[j + 1];
-            // multiply the right numbers product
+            // multiply the remaining right numbers product
             res[j] *= right;
         }
         return res;
