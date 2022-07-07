@@ -7,4 +7,3 @@ Leetcode study, reference by https://leetcode.com
 - 647 - Palindromic Substrings
 - 1143 - Longest Common Subsequence
 
-# String

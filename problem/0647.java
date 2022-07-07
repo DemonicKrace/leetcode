@@ -10,6 +10,23 @@ class Solution {
             count += computeCount(s, i, i + 1);
         }
         return count;
+        
+        // // method 2, DP bottom up with loop, use two row to record, time = O(N^2), space = O(N)
+        // int count = 0;
+        // int n = s.length();
+        // boolean[] dp = new boolean[n];
+        // boolean[] dpPrev = new boolean[n];
+        // for (int left = n - 1; left >= 0; left--) {
+        //     for (int right = left; right < n; right++) {
+        //         dp[right] = (s.charAt(left) == s.charAt(right)) && (right - left < 3 || dpPrev[right - 1]);
+        //         if (dp[right]) count++;
+        //     }
+        //     // swap dp, dpPrev
+        //     boolean[] temp = dp;
+        //     dp = dpPrev;
+        //     dpPrev = temp;            
+        // }
+        // return count;
     }
     
     private int computeCount(String s, int left, int right) {
