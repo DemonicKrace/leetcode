@@ -11,3 +11,10 @@ String
 
 Array
 - 221 - Maximal Square
+
+# Greedy
+- 409 - Longest Palindrome
+
+# Two pointers
+- 15 - 3Sum
+- 18 - 4Sum
