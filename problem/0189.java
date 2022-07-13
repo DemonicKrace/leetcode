@@ -1,6 +1,7 @@
 class Solution {
     public void rotate(int[] nums, int k) {
         // method 1, reverse, time = O(N), space = O(1)
+        k %= nums.length;
         // reverse all
         // ex: =====>==> -> <==<=====
         reverse(nums, 0, nums.length - 1);
