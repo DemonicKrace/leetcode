@@ -68,3 +68,73 @@ class Solution {
 //         return true;
 //     }
 }
+
+// 2022-07-18
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        // // method 1, horizontal scan, time = O(S), space = O(1), S = all string letters size
+        // String prefix = strs[0];
+        // for (int i = 1; i < strs.length; i++) {
+        //     prefix = commonPrefix(prefix, strs[i]);
+        //     if (prefix.length() == 0) break;
+        // }
+        // return prefix;
+
+        // // method 2, vertical scan, time = O(S), space = O(1), S = all string letters size
+        // for (int i = 0; i < strs[0].length(); i++) {
+        //     char curLetter = strs[0].charAt(i);
+        //     for (int j = 1; j < strs.length; j++) {
+        //         if (i >= strs[j].length() || curLetter != strs[j].charAt(i)) return strs[0].substring(0, i); 
+        //     }
+        // }
+        // return strs[0];
+        
+        // // method 3, divide and conquer, time = O(S), space = O(MlogN), S = all string letters size, N = strings count, M = string length
+        // return dcCommonPrefix(strs, 0, strs.length - 1);
+        
+        // method 4, binary search, time = O(SlogM), space = O(1), S = all string letters size, N = strings count, M = string length
+        int minWordSize = Integer.MAX_VALUE;
+        for (String str: strs) 
+            minWordSize = Math.min(minWordSize, str.length());
+        int low = 0;
+        int high = minWordSize - 1;
+        String prefix = "";
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            boolean found = true;
+            for (int i = 1; i < strs.length; i++) {
+                if (!strs[i].startsWith(strs[i - 1].substring(0, mid + 1))) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                prefix = strs[0].substring(0, mid + 1);
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return prefix;
+    }
+    
+    // private String dcCommonPrefix(String[] strs, int start, int end) {
+    //     if (start == end) return strs[start]; 
+    //     int mid = (start + end) / 2;
+    //     String leftCommonPrefix = dcCommonPrefix(strs, start, mid);
+    //     String rightCommonPrefix = dcCommonPrefix(strs, mid + 1, end);
+    //     String prefix = commonPrefix(leftCommonPrefix, rightCommonPrefix);
+    //     return prefix;
+    // }
+    
+    // private String commonPrefix(String s1, String s2) {
+    //     StringBuilder sb = new StringBuilder();
+    //     for (int i = 0, j = 0; i < s1.length() && j < s2.length(); ) {
+    //         char letter = s1.charAt(i);
+    //         if (letter != s2.charAt(j)) return sb.toString();
+    //         sb.append(letter);
+    //         i++; j++;
+    //     }
+    //     return sb.toString();
+    // }
+}

@@ -19,3 +19,10 @@ Matrix
 # Two pointers
 - 15 - 3Sum
 - 18 - 4Sum
+
+# Specail algorithm
+- 28 - Implement strStr(), KMP
+
+# Trie
+- 14 - Longest Common Prefix
+
