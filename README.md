@@ -3,6 +3,9 @@ Leetcode study, reference by https://leetcode.com
 
 # Dynamic programming 
 
+Array
+- 53 - Maximum Subarray
+
 String
 - 5 - Longest Palindromic Substring
 - 139 - Word Break
