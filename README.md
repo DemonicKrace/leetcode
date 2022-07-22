@@ -4,7 +4,7 @@ Leetcode study, reference by https://leetcode.com
 # Dynamic programming 
 
 Array
-- 53 - Maximum Subarray
+- 53 - Maximum Subarray, Divide and conquer
 
 String
 - 5 - Longest Palindromic Substring
