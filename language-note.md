@@ -2,6 +2,23 @@
 
 ## Java
 
+### Arrays
+
+```
+method Arrays.asList(T... a), returns a "fixed-size" List as of size of a given array
+
+Ex 1:
+String[] letters = { "a", "b", "c", "d" }; 
+List<String> letterList = Arrays.asList(letters); 
+letterList.add("e"); // it will throw an UnsupportedOperationException
+
+// other soultion, use ArrayList
+String[] letters = { "a", "b", "c", "d" }; 
+List<String> letterList = new ArrayList<>(Arrays.asList(letters)); 
+letterList.add("e"); // it is ok
+
+```
+
 ### HashMap
 ```
 method put(key, value), key and value can be 'null'
@@ -17,7 +34,7 @@ method add(value), value can not be 'null'
 
 Ex 1: 
 Queue<T v> que = new ArrayDeue();
-que.add(null); // it will throw a exception
+que.add(null); // it will throw an exception
 
 // other soultion, use LinkedList<T>
 Queue<T> que = new LinkedList();
@@ -58,7 +75,7 @@ index = bisect.bisect(array, 3)
 #### prerequisite 
 - array values should be `ascending` order
 #### function
-- use binary search to insert value to array
+- use binary search to insert value into array
 #### time complexity
 -  O(N logN)
 ```
