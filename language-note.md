@@ -2,6 +2,33 @@
 
 ## Java
 
+### Comparator
+- custom defined compare logic
+```
+Ex 1:
+Integer[] arr = new Integer[]{2, 3, 1, 4, 0};
+Arrays.sort(arr, new Comparator<Integer>(){
+    @Override
+    public int compare(Integer o1, Integer o2) {
+    	// -1 : o1 < o2
+		//  0 : o1 == o2
+		// +1 : o1 > o2
+        return o1.compareTo(o2);
+    }
+});
+// arr = [0, 1, 2, 3, 4]
+
+Ex 2:
+// use lambda
+Integer[] arr = new Integer[]{2, 3, 1, 4, 0};
+Arrays.sort(arr, (o1, o2) -> { 
+	// -1 : o1 < o2
+	//  0 : o1 == o2
+	// +1 : o1 > o2
+    return o2.compareTo(o1);
+});
+// arr = [4, 3, 2, 1, 0]
+```
 ### Arrays
 
 ```
@@ -12,6 +39,7 @@ String[] letters = { "a", "b", "c", "d" };
 List<String> letterList = Arrays.asList(letters); 
 letterList.add("e"); // it will throw an UnsupportedOperationException
 
+Ex 2:
 // other soultion, use ArrayList
 String[] letters = { "a", "b", "c", "d" }; 
 List<String> letterList = new ArrayList<>(Arrays.asList(letters)); 
@@ -19,9 +47,20 @@ letterList.add("e"); // it is ok
 
 ```
 
+#### binarySearch(T[] a, T key, Comparator<? super T> c)
+- This method returns index of the search key, if it is contained in the array, else it returns (-(insertion point) - 1)
+
+```
+Ex 1:
+int[] arr = new int[]{1, 3, 5, 7, 9};
+int index1 = Arrays.binarySearch(arr, 5); // index1 = 2
+int index2 = Arrays.binarySearch(arr, 5); // index2 = -4 (-3 - 1)
+```
+
 ### HashMap
 ```
 method put(key, value), key and value can be 'null'
+
 Ex 1:
 Map<T k, T v> map = new HashMap();
 map.put(null, null); // it is ok
@@ -36,6 +75,7 @@ Ex 1:
 Queue<T v> que = new ArrayDeue();
 que.add(null); // it will throw an exception
 
+Ex 2:
 // other soultion, use LinkedList<T>
 Queue<T> que = new LinkedList();
 que.add(null); // it is ok
@@ -43,6 +83,27 @@ que.add(null); // it is ok
 ```
 
 ## Python
+
+### itertools
+
+#### groupby
+```
+
+Ex 1:
+teamList = [("team1", 1), ("team1", 2), ("team2", 3), ("team2", 4)]
+teamGroup = {}
+for key, group in itertools.groupby(teamList, lambda x: x[0]):
+	teamGroup[key] = list(group)
+# teamGroup = {'team1': [('team1', 1), ('team1', 2)], 'team2': [('team2', 3), ('team2', 4)]}
+
+Ex 2:
+for key, group in itertools.groupby("aabac"):
+	print(key, list(group))
+# a ['a', 'a']
+# b ['b']
+# a ['a']
+# c ['c']
+```
 ### bisect 
 - binary search
 <hr> 
