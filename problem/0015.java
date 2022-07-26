@@ -1,7 +1,7 @@
 // 2022-05-12
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        // method 1
+        // method 1, sort and two pointer, time = O(N^2), space = O(N)
         List<List<Integer>> res = new ArrayList();
         Arrays.sort(nums);
         int size = nums.length;
@@ -47,6 +47,35 @@ class Solution {
                     // check next element not duplicated
                     while (second < third && nums[second] == nums[second - 1]) second++;
                     while (second < third && nums[third] == nums[third + 1]) third--;                    
+                }
+            }
+        }
+        return result;
+    }    
+}
+
+// 2022-07-26
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        // method 1, sort and two pointer, time = O(N^2), space = O(N)
+        List<List<Integer>> result = new ArrayList();
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n - 2; i++) {
+            // check first element not duplicated
+            while (i > 0 && i < n - 2 && nums[i] == nums[i - 1]) i++;
+            int j = i + 1;
+            int k = n - 1;
+            while (j < k) {
+                if (nums[j] + nums[k] > -nums[i]) k--;
+                else if (nums[j] + nums[k] < -nums[i]) j++;
+                else {
+                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++; k--;
+                    // check second element not duplicated
+                    while (j < k && nums[j] == nums[j - 1]) j++;
+                    // check third element not duplicated
+                    while (j < k && nums[k] == nums[k + 1]) k--;
                 }
             }
         }

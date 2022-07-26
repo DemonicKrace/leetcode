@@ -43,3 +43,33 @@ class Solution {
     //     return right - left - 1;
     // }
 }
+
+// 2022-07-26
+class Solution {
+    public String longestPalindrome(String s) {
+        // method 1, iterate mid to expand, time = O(N^2), space = O(1)
+        int n = s.length();
+        int start = 0, maxLen = 0;
+        for (int mid = 0; mid < n; mid++) {
+            // single mid
+            int sLen = computeLength(s, mid, mid);
+            // double mid
+            int dLen = computeLength(s, mid, mid + 1);
+            int len = Math.max(sLen, dLen);
+            if (maxLen < len) {
+                start = mid - (len - 1) / 2;
+                maxLen = len;
+            }
+        }
+        return s.substring(start, start + maxLen);
+    }
+    
+    private int computeLength(String s, int left, int right) {
+        int n = s.length();
+        while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+}

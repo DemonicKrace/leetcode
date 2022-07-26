@@ -83,3 +83,48 @@ class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        // method 1, sort and recursive, time = O(N^3), space = O(N^2)
+        Arrays.sort(nums);
+        return kSum(nums, target, 0, 4);
+    }
+    
+    private List<List<Integer>> kSum(int[] nums, long target, int start, int k) {
+        if (k == 2) return twoSum(nums, target, start);
+        List<List<Integer>> result = new ArrayList();
+        int n = nums.length;
+        // check reaming count is enough and average is between maximum and minimum 
+        if (start + k > n || target / k < nums[start] || target / k > nums[n - 1]) return result;
+        for (int i = start; i < n - k + 1; i++) {
+            // check not duplicated
+            if (i > start && nums[i] == nums[i - 1]) continue;
+            for (List<Integer> subset: kSum(nums, target - nums[i], i + 1, k - 1)) {
+                List<Integer> row = new ArrayList();
+                row.add(nums[i]);
+                row.addAll(subset);
+                result.add(row);
+            }
+        }
+        return result;
+    }
+    
+    private List<List<Integer>> twoSum(int[] nums, long target, int start) {
+        List<List<Integer>> result = new ArrayList();
+        int n = nums.length, left = start, right = n - 1;
+        while (left < right) {
+            if (nums[left] + nums[right] > target) right--;
+            else if (nums[left] + nums[right] < target) left++;
+            else {
+                result.add(Arrays.asList(nums[left++], nums[right--]));
+                // check left not duplicated
+                while (left < right && nums[left] == nums[left - 1]) left++;
+                // check right not duplicated                
+                while (left < right && nums[right] == nums[right + 1]) right--;
+            }
+        }
+        return result;
+    }
+}
