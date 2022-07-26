@@ -10,7 +10,7 @@ Integer[] arr = new Integer[]{2, 3, 1, 4, 0};
 Arrays.sort(arr, new Comparator<Integer>(){
     @Override
     public int compare(Integer o1, Integer o2) {
-    	// -1 : o1 < o2
+		// -1 : o1 < o2
 		//  0 : o1 == o2
 		// +1 : o1 > o2
         return o1.compareTo(o2);
