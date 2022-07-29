@@ -93,16 +93,38 @@ Ex 1:
 teamList = [("team1", 1), ("team1", 2), ("team2", 3), ("team2", 4)]
 teamGroup = {}
 for key, group in itertools.groupby(teamList, lambda x: x[0]):
-	teamGroup[key] = list(group)
+    teamGroup[key] = list(group)
 # teamGroup = {'team1': [('team1', 1), ('team1', 2)], 'team2': [('team2', 3), ('team2', 4)]}
 
 Ex 2:
 for key, group in itertools.groupby("aabac"):
-	print(key, list(group))
+    print(key, list(group))
 # a ['a', 'a']
 # b ['b']
 # a ['a']
 # c ['c']
+```
+
+#### permutations
+```
+# itertools.permutations(iterable, r=None)
+
+Ex 1:
+print(list(itertools.permutations("abc", 3)))
+# [('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
+print(list(itertools.permutations("abc", 2)))
+# [('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+
+```
+#### combinations
+```
+# itertools.combinations(iterable, r)
+
+Ex 1:
+print(list(itertools.combinations("abc", 2)))
+# [('a', 'b'), ('a', 'c'), ('b', 'c')]
+print(list(itertools.combinations("abc", 3)))
+# [('a', 'b', 'c')]
 ```
 ### bisect 
 - binary search
