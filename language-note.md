@@ -2,6 +2,15 @@
 
 ## Java
 
+### Operator
+```
+// dividend % divisor, mod's singed is same with "dividend"
+System.out.println(10 % 3); // 1
+System.out.println(10 % -3); // 1
+System.out.println(-10 % 3); // -1
+System.out.println(-10 % -3); // -1
+```
+
 ### Comparator
 - custom defined compare logic
 ```
@@ -83,6 +92,19 @@ que.add(null); // it is ok
 ```
 
 ## Python
+
+### Operator
+```
+// dividend % divisor, mod's singed is same with "divisor"
+print(10 % 3)
+print(10 % -3)
+print(-10 % 3)
+print(-10 % -3)
+# 1
+# -2
+# 2
+# -1
+```
 
 ### itertools
 
