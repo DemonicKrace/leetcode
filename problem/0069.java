@@ -1,9 +1,7 @@
 class Solution {
-	// solution 1, Binary search - Template #1
     public int mySqrt(int x) {
-        if (x == 0) {
-            return 0;
-        }
+        // method 1, Binary search - Template #2, time = O(logN), space O(1)
+        if (x == 0) return 0;
         int left = 1, right = x;
         // type2, left <= right
         while (left < right) {
@@ -18,6 +16,14 @@ class Solution {
             }
         }
         return left;
+
+        // method 2, Binary search - math, time = O(logN), space O(1)
+        if (x == 0) return 0;
+        // avoid overflow
+        long i = x;
+        while(i > x / i) 
+            i = (i + x / i) / 2;
+        return (int)i;
     }
 
     // solution 2
@@ -25,11 +31,21 @@ class Solution {
     	if (x == 0) return 0;
 		long i = x;
 		while(i > x / i)  
-			i = (i + x / i) / 2;	    	
+			i = (i + x / i) / 2;
 		return (int)i;
 	}
 
 	// solution 3, brute force
 	// ...
 
+}
+
+// 2022-08-02
+class Solution {
+    public int mySqrt(int x) {
+        // method 1, math, time = O(logN), space O(1)
+        int lastBase = 0;
+        for (int base = 0; x - base * base >= 0; base++) lastBase = base;
+        return lastBase;
+    }
 }
