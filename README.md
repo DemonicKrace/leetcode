@@ -33,6 +33,7 @@ Matrix
 - 14 - Longest Common Prefix
 
 # Math
+- 29 - Divide Two Integers, Bit Manipulation
 - 50 - Pow(x, n), Divide and conquer
 - 69 - Sqrt(x), Binary search
 - 172 - Factorial Trailing Zeroes
